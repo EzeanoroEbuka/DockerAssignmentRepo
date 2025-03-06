@@ -1,0 +1,29 @@
+version: "3"
+services:
+  app:
+#    build: docker build -t dockerpractice:-latest .
+    image: dockerdemo
+    environment:
+      APP_NAME: ${APP_NAME}
+      HIBERNATE: ${HIBERNATE}
+      DDL_AUTO: ${DDL_AUTO}
+      DATASOURCE_URL: ${DATASOURCE_URL}
+      USERNAME: ${USERNAME}
+      PASSWORD: ${PASSWORD}
+      PORT: ${PORT}
+
+    ports:
+      - "8080:${PORT}"
+
+
+
+
+  db:
+    image: postgres
+    environment:
+      USERNAME: ${USERNAME}
+      PASSWORD: ${PASSWORD}
+
+networks:
+  ebestkeyz:
+    driver: bridge
